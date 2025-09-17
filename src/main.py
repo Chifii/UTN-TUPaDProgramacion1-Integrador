@@ -2,6 +2,7 @@
 import os
 from csv_utils import load_countries
 from csv_utils import print_country
+from menu import menu_principal
 
 def default_csv_path() -> str:
     here = os.path.dirname(os.path.abspath(__file__))
@@ -16,3 +17,6 @@ if __name__ == "__main__":
         print(f"Se cargaron {len(data)} países:\n")
         for p in data:
             print_country(p)
+    print("--------------------------------------------------------------------------------------------------")
+    menu_principal()
+        
