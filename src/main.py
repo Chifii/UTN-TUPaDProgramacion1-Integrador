@@ -18,5 +18,6 @@ if __name__ == "__main__":
         for p in data:
             print_country(p)
     print("--------------------------------------------------------------------------------------------------")
-    menu_principal()
+    menu_principal(data)
+    
         
