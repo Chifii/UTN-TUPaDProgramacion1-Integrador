@@ -41,3 +41,35 @@ def print_country(p: dict) -> None:
         f"Superficie: {p['superficie']:,} km² | "
         f"Continente: {p['continente']}"
     )
+
+def save_countries(countries: List[Dict[str, Any]], csv_path: str) -> bool:
+    """
+    Guarda la lista de países en un archivo CSV.
+    
+    Args:
+        countries: Lista de diccionarios con datos de países
+        csv_path: Ruta del archivo CSV donde guardar
+    
+    Returns:
+        True si se guardó exitosamente, False en caso contrario
+    """
+    try:
+        with open(csv_path, 'w', newline='', encoding='utf-8') as f:
+            if not countries:
+                print("[WARN] No hay países para guardar")
+                return False
+            
+            fieldnames = ['nombre', 'poblacion', 'superficie', 'continente']
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            
+            writer.writeheader()
+            
+            for country in countries:
+                writer.writerow(country)
+        
+        print(f"[INFO] Se guardaron {len(countries)} países en {csv_path}")
+        return True
+        
+    except Exception as e:
+        print(f"[ERROR] Error al guardar CSV: {e}")
+        return False
