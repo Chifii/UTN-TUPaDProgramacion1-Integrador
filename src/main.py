@@ -12,12 +12,11 @@ if __name__ == "__main__":
     path = default_csv_path()
     data = load_countries(path)
     if not data:
+        print("\n")
         print("No se pudo cargar el dataset. Verifique el CSV.")
     else:
+        print("\n")
         print(f"Se cargaron {len(data)} países:\n")
-        for p in data:
-            print_country(p)
-    print("--------------------------------------------------------------------------------------------------")
-    menu_principal(data)
+    menu_principal(data, path)
     
         
